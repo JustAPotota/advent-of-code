@@ -1,4 +1,4 @@
-use std::{env, fs};
+use std::env;
 
 #[cfg(test)]
 mod tests {
@@ -14,90 +14,6 @@ mod tests {
     fn part2_test() {
         let input = include_str!("test_input.txt");
         part2(input);
-    }
-}
-
-enum Color {
-    Red,
-    Green,
-    Blue,
-}
-
-#[derive(Debug)]
-struct Round {
-    red: u8,
-    green: u8,
-    blue: u8,
-}
-
-struct Game {
-    number: u8,
-    rounds: Vec<Round>,
-}
-
-mod parser {
-    use nom::branch::{alt, permutation};
-    use nom::character::complete::{char, space0, space1};
-    use nom::combinator::opt;
-    use nom::error::ParseError;
-    use nom::multi::{many1, separated_list1};
-    use nom::sequence::Tuple;
-    use nom::{
-        bytes::complete::tag,
-        character::complete::{u16, u8},
-        IResult, Parser,
-    };
-
-    use crate::{Color, Game, Round};
-
-    fn red(input: &str) -> IResult<&str, (u8, Color)> {
-        let (input, (_, count, _, _, _)) =
-            (space0, u8, space0, tag("red"), opt(char(','))).parse(input)?;
-        Ok((input, (count, Color::Red)))
-    }
-
-    fn green(input: &str) -> IResult<&str, (u8, Color)> {
-        let (input, (_, count, _, _, _)) =
-            (space0, u8, space0, tag("green"), opt(char(','))).parse(input)?;
-        Ok((input, (count, Color::Green)))
-    }
-
-    fn blue(input: &str) -> IResult<&str, (u8, Color)> {
-        let (input, (_, count, _, _, _)) =
-            (space0, u8, space0, tag("blue"), opt(char(','))).parse(input)?;
-        Ok((input, (count, Color::Blue)))
-    }
-
-    fn round(input: &str) -> IResult<&str, Round> {
-        let (input, (_, colors)) =
-            (space0, separated_list1(char(','), alt((red, green, blue)))).parse(input)?;
-        let (mut red, mut green, mut blue) = (0, 0, 0);
-        for (count, color) in colors {
-            match color {
-                Color::Red => red = count,
-                Color::Green => green = count,
-                Color::Blue => blue = count,
-            }
-        }
-        Ok((
-            input,
-            Round {
-                red,   //.unwrap_or_default(),
-                green, //.unwrap_or_default(),
-                blue,  //.unwrap_or_default(),
-            },
-        ))
-    }
-
-    pub fn parse_line(line: &str) -> IResult<&str, Game> {
-        let (input, (_, number, _, rounds)) = (
-            tag("Game "),
-            u8,
-            char(':'),
-            separated_list1(char(';'), round),
-        )
-            .parse(line)?;
-        Ok((input, Game { number, rounds }))
     }
 }
 
