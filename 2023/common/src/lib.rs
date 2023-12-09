@@ -1,14 +1,10 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+use std::time::{Duration, Instant};
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+pub fn time_fn<F, I, O>(f: F, input: I) -> (O, Duration)
+where
+    F: FnOnce(I) -> O,
+{
+    let start_time = Instant::now();
+    let output = f(input);
+    (output, start_time.elapsed())
 }
