@@ -2,8 +2,6 @@ use std::str::FromStr;
 
 #[cfg(test)]
 mod tests {
-    use std::time::Instant;
-
     use crate::*;
 
     #[test]
