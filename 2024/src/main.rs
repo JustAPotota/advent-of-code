@@ -20,7 +20,7 @@ macro_rules! import_days {
     };
 }
 
-import_days!(00, 01, 02);
+import_days!(00, 01, 02, 03);
 
 #[derive(Debug, Parser)]
 struct Args {

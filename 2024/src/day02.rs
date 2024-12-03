@@ -1,5 +1,3 @@
-use std::cell::OnceCell;
-
 fn is_report_safe(report: &[i32]) -> bool {
     let mut report_ascending = None;
     for pair in report.windows(2) {
