@@ -1,5 +1,7 @@
 use regex::Regex;
 
+pub const TEST: &str = "";
+
 pub fn part1(input: &str) -> anyhow::Result<String> {
     let regex = Regex::new(r"mul\((\d+),(\d+)\)")?;
 

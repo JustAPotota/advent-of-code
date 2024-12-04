@@ -1,5 +1,7 @@
 use std::collections::HashMap;
 
+pub const TEST: &str = "";
+
 pub fn part1(input: &str) -> anyhow::Result<String> {
     let mut list_a = Vec::<i32>::new();
     let mut list_b = Vec::<i32>::new();
