@@ -1,6 +1,6 @@
+pub const TEST: &str = "";
 
-
-pub const TEST: &str = "";pub fn part1(input: &str) -> anyhow::Result<String> {
+pub fn part1(input: &str) -> anyhow::Result<String> {
     Ok(input.to_owned())
 }
 
