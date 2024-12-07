@@ -1,6 +1,12 @@
 use std::collections::HashMap;
 
-pub const TEST: &str = "";
+pub const TEST: &str = "\
+3   4
+4   3
+2   5
+1   3
+3   9
+3   3";
 
 pub fn part1(input: &str) -> anyhow::Result<String> {
     let mut list_a = Vec::<i32>::new();

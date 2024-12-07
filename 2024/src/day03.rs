@@ -1,6 +1,7 @@
 use regex::Regex;
 
-pub const TEST: &str = "";
+pub const TEST: &str = "\
+xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))";
 
 pub fn part1(input: &str) -> anyhow::Result<String> {
     let regex = Regex::new(r"mul\((\d+),(\d+)\)")?;
